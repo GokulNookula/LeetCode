@@ -9,7 +9,7 @@ class Solution:
             if k > 0 and nums[k] == nums[k - 1]:  # Skip duplicate elements for k
                 continue
             left = k + 1
-            right = len(nums) - 1
+            right = len(nums) - 1    
             while (left < right):
                 total = nums[k] + nums[left] + nums[right]
                 if total < 0:
@@ -32,3 +32,10 @@ class Solution:
                         right -= 1
 
         return res
+
+'''
+Explained: Time Complexity: O(n^2) Space Complexity: O(1)
+
+We basically first make an array to store all the results and also sort all the numbers in the array in
+ascending order. Then we make a for loop and set 1 of the values. Then we check if k is above 0 and check if
+we already have that element 
