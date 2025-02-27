@@ -30,7 +30,18 @@ class Solution:
 '''
 Explained: Time Complexity: O(n^2) Space Complexity: O(1) or O(n) depends on the sort algorithm used
 
-We basically make 
+We basically make an array to hold our result of 3Sums. We first sort the array to try get all the duplicates
+besides each other thus eliminating the repetitive solution adding to the result array.Then we make a for loop
+to iterate with the index i and value a. Then we check if a is greater than 0 then we want to skip that element as
+summing that number would not be equal to 0 thus ignoring large numbers. Then we check for duplicates by having an if 
+statement to check if I > 0 and to make sure that the previous number is not the same as our current number. If it is then
+we skip the loop. Once we finally get the a number we use two pointers to get the next two numbers. We now make a while loop
+and make sure l less than r index pointer. Then we add up the sum of it. Then we check if our total is greater than 0 then
+we decrement our right pointer as we have sorted our list in ascending order. Or if our Sum is less than 0 then we increment our
+left pointer. Then if we get the answer we append it to our result array and we move our left and right pointer. Then after that
+we want to make sure our new left pointer is not a duplicate again so we make sure our current left pointer is not the same as
+previous left pointer and also if our left index is less than our right index. If they are the same then we increment our left pointer.
+Finally we get our result and return it. Thus solution
 '''
 
 
