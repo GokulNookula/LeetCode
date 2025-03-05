@@ -92,3 +92,31 @@ is greater than 0, we decrease right to get a smaller number. If the sum is 0, w
 and move both pointers to check for more possible solutions. Then, we make two while loops to skip duplicate 
 numbers for left and right so we don't use the same numbers again. Finally, we return the result.
 '''
+
+# Optimal Solution was obtained without watching video on 3/4/2025
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+
+        for a in range(len(nums) - 2):
+
+            if a > 0 and nums[a] == nums[a - 1]:
+                continue  
+            l = a + 1
+            r = len(nums) - 1
+            while (l < r):
+                total = nums[a] + nums[l] + nums[r]
+
+                if total < 0:
+                    l += 1
+                elif total > 0:
+                    r -= 1
+                else:
+                    res.append([nums[a],nums[l],nums[r]])
+                    l += 1
+                    r -= 1
+
+                    while l < r and nums[l] == nums[l - 1]:
+                        l += 1
+        return res
