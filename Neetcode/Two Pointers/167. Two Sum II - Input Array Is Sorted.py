@@ -25,3 +25,19 @@ we make a while loop and we check if we are over the target number then we decre
 and if we are less than our target number then we increase our left pointer. Do this process
 until we reach our goal and thus we return it.
 '''
+
+# Optimal Solution Obtained again on 3/5/2025
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
+
+        while(left  < right):
+
+            if numbers[left] + numbers[right] < target:
+                left += 1
+            elif numbers[left] + numbers[right] > target:
+                right -= 1
+            else:
+                return [left + 1,right + 1]
+        return [-1,-1]
