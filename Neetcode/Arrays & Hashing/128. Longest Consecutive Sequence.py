@@ -52,3 +52,21 @@ class Solution:
               if (longSeq < count):
                   longSeq = count
           return longSeq
+
+# Solved solution on 3/22/2025 and is Optimal
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+
+        numSet = set(nums)
+        longSeq = 0
+
+        for num in numSet:
+
+            length = 0
+            if (num - 1) in numSet:
+                continue
+
+            while (num + length) in numSet:
+                length += 1
+            longSeq = max(longSeq,length)
+        return longSeq
