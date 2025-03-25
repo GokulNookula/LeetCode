@@ -33,3 +33,22 @@ of the left line is less than the right height line by incremeting the left poin
 if the height of the right line is less than the left height line. We also have to deal with another condition where
 both are the same then you can either decrement right or increment left. Then we finally return the maxArea.
 '''
+
+# My solution - OPTIMAL on 3/25/2025
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left = 0
+        right = len(height) - 1
+        maxArea = float(-inf)
+
+        while(left < right):
+
+            area =  (right - left) * min(height[left],height[right])
+            maxArea = max(maxArea,area)
+            if height[left] < height[right]:
+                left += 1
+            else:
+                # When both the pointers are the same height
+                # You can either decrement right pointer or increment left
+                right -= 1
+        return maxArea
