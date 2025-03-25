@@ -19,6 +19,7 @@ class Solution:
             j = i
             while s[j] != "#":
                 j += 1
+            # s[i:j] = s[0:1] = "5" how it looks
             length = int(s[i:j])
             # First character after the delimitar aka 4#e and e is the starting point
             res.append(s[j + 1: j + 1 + length])
