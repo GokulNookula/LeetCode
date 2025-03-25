@@ -58,3 +58,21 @@ exist then we increase the count by 1. Then finally we check if both of the hash
 then we return True or else we return False. This algorithm can be made faster by using ASCII values and
 limiting the keys to 26 characters only.
 '''
+
+# My solution - OPTIMAL on 3/24/2025
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        if len(s) != len(t):
+            return False
+
+        count = [0] * 26
+
+        for i in range(len(s)):
+            count[ord(s[i]) - ord('a')] += 1
+            count[ord(t[i]) - ord('a')] -= 1
+
+        for c in count:
+            if c != 0:
+                return False
+        return True
