@@ -19,3 +19,14 @@ the question says if it exists then we just return True. If we do not find any t
 ends we just return False. Thus this is a linear time complexity solution but the trade off here is we
 need more space.
 '''
+# My solution - OPTIMAL on 3/24/2025 (tried a different way of dictionary)
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+
+        mydict = defaultdict(int)
+
+        for i in range(len(nums)):
+            mydict[nums[i]] += 1
+            if mydict[nums[i]] > 1:
+                return True
+        return False
