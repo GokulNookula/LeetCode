@@ -62,3 +62,16 @@ a starting count value and if it exists then we increase the count.
 The heap part basically goes through the array and finds the nlargest
 values and returns it from the Hash Table.
 '''
+
+# My solution did not solve 3/24/2025
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        myHash = {}
+
+
+        for num in nums:
+            if num in myHash:
+                myHash[num] += 1
+            else:
+                myHash[num] = 1
+        return heapq.nlargest(k,myHash,key=myHash.get)
