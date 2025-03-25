@@ -18,3 +18,17 @@ then later we check if the complement exists in the hashmap and if it does
 we return the index of it along with the index of the current number
 and if not we add the current number aka key along with its index aka i 
 '''
+
+# My Solution - OPTIMAL
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        myHash = {}
+
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in myHash:
+                return [myHash[complement], i]
+            myHash[nums[i]] = i
+        
+        return []
