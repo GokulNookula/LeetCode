@@ -63,4 +63,23 @@ and we find words which have the same instances and group them and if they dont 
 example:
 defaultdict(<class 'list'>, {'aet': ['eat', 'tea', 'ate'], 'ant': ['tan', 'nat'], 'abt': ['bat']})
 '''
+
+# My solution - OPTMAL on 3/24/2025
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        myHash = {}
+        def asciiVal(s):
+            # Instead of just summing ASCII, count how many times each char appears
+            # Create a 26-length tuple for 'a' to 'z'
+            count = [0] * 26
+            for char in s:
+                count[ord(char) - ord('a')] += 1
+            return tuple(count)
         
+        for s in strs:
+            key = asciiVal(s)
+            if key not in myHash:
+                myHash[key] = [s]
+            else:
+                myHash[key].append(s)
+        return list(myHash.values())
