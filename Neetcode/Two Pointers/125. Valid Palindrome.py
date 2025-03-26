@@ -56,3 +56,33 @@ to remove anything that is not. Then we create two pointers called i and j
 where we iterate through the entire array and check if i and j are the same
 and if they are we continue or else we return False and it is not a palindrome
 '''
+
+# My solution not Optiml on 3/25/2025
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+
+        def alphaNum(char):
+            return (
+                (ord(char) >= ord('a') and ord(char) <= ord('z')) or
+                (ord(char) >= ord('A') and ord(char) <= ord('Z')) or
+                (ord(char) >= ord('0') and ord(char) <= ord('9'))
+            )
+        
+        l = 0
+        r = len(s) - 1
+
+        while (l < r):
+            if alphaNum(s[l]) == False:
+                l += 1
+                continue
+            if alphaNum(s[r]) == False:
+                r -= 1
+                continue
+            if s[l].lower() != s[r].lower():
+                return False
+            l += 1
+            r -= 1
+        return True
+'''
+Almost close to the original optimal solution
+'''
