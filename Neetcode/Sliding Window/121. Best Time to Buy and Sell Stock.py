@@ -6,7 +6,7 @@ class Solution:
         l = 0
         # Selling stock High on day 2
         r = 1
-        maxProfit
+        maxProfit = 0
 
         # To make sure we do not go out of bound of prices
         while r < len(prices):
