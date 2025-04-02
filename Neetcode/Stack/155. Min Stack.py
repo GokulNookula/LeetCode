@@ -31,3 +31,29 @@ that it is not empty and hold the result and then append that result into the mi
 pop both stacks at the same time. For getting the top of a stack we do it for regular stack. For getMin
 we just return whatever is on the top of the minStack. Thus making it easier.
 '''
+
+# My Solution - Almost Optimal 4/1/2025
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+
+        if len(self.minStack) != 0 and (val < self.minStack[-1]):
+            self.minStack.append(val)
+        elif len(self.minStack) != 0 and (val > self.minStack[-1]):
+            self.minStack.append(self.minStack[-1])
+        else:
+            self.minStack.append(val)
+    def pop(self) -> None:
+        del self.stack[-1]
+        del self.minStack[-1]
+
+    def top(self) -> int:
+        return self.stack[-1]
+        
+    def getMin(self) -> int:
+        return self.minStack[-1]
