@@ -27,3 +27,33 @@ the top. Thus we have to store the numbers as a and b of popped results. Then we
 subtraction and after we append it back. For division we must make sure our number is an integer at the end
 so we do int() after that we append it back. Then we finally return the result aka stack[0]
 '''
+
+# My solution - Almost similar to optimal code on 4/1/2025
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+        total = 1
+
+        for i in range(len(tokens)):
+            if tokens[i] == "+":
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(b + a)
+            elif tokens[i] == "-":
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(b - a)
+            elif tokens[i] == "*":
+                a = stack.pop()
+                b = stack.pop()
+                stack.append(b * a)
+            elif tokens[i] == "/":
+                a = stack.pop()
+                b = stack.pop()
+                num = int(float(b) / a)
+                num = max(num,0)
+                stack.append(num)
+            else:
+                stack.append(int(tokens[i]))
+        return stack[0]
+        
