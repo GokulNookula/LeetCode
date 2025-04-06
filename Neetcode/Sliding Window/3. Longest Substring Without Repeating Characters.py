@@ -38,3 +38,18 @@ have a duplicate in our set then we add the current character from the right poi
 is bigger than our previous maximum result aka longest substring if we do then we update it or else it keeps the result. Then once we iterate fully from the loop
 we return our longest substring value. Thus since we are using a set our length of our set is the total number of unique characters in the string making it O(m).
 '''
+
+# My solution on 4/5/2025
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        maxLength = 0
+        left = 0
+
+        for right in range(len(s)):
+            while s[right] in charSet:
+                charSet.remove(s[left])
+                left += 1
+            charSet.add(s[right])
+            maxLength = max(maxLength, right - left + 1)
+        return maxLength
