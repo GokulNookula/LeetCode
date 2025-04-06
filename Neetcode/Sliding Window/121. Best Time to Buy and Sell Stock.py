@@ -60,3 +60,16 @@ class Solution:
 This uses dynamic programming to also calculate the profit while focusing on finding the minimum price for buying 
 stored while we iterate over for all the sell prices in the array and then only store the one that gives us the most profit
 '''
+
+# My solution - close to Optimal Solution on 4/5/2025
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        
+        left = prices[0]
+        maxProf = 0
+
+        for right in prices:
+            maxProf = max(maxProf, (right - left))
+            if right <= left:
+                left = right
+        return maxProf
