@@ -39,9 +39,19 @@ class Solution:
         # Returning the maximum character
         return res
 
-'''Explained: Time Complexity: O(n) Spac Complexity: O(n)
-In this we are going to have a dictionary named count to store all our 26 variables which is not restricted. We also
-have a variable that 
+'''Explained: Time Complexity: O(n) Space Complexity: O(n)
+We first make a dictionary called count where we store all the characters we find while parsing through the entire string. We
+initalize the left pointer to the beginning of the array. We initalize the result variable to store the longest character sequence along with
+the replacements being equal to or under k. We also initalize a variable called maxf which store the maximum frequency character from the dictionary.
+Next we make a for loop and increment the right pointer. In here, we must check if the current character in the right pointer is alredy inside the 
+dictonary then we just increase it's count by 1 while also doing coun.get() to get the latest count or else we set it to 0 and increment it by 1
+to initalize it. Next we need update the maximum frequency character value from the hashmap everytime to keep track of the largest count frequency.
+Next if we find that the right pointer is a different character from the max frequency character then we need to perform windowlen - maxf and if that
+value is greater than k aka the replaceable characters if it is not then we skip the while loop or else we decrement the count of the character at the
+left pointer aka move it by 1 to fit our critera and aka we increment the left pointer by 1. Once we meet te above critera then we get out the while loop
+we next have to update our maximum character result into our res by checking if our current window is greater than our older res window. If it is then
+we update it or else we do not. Since we only go through the array only once the Time Complexity is O(n) and the Space Complexity is O(n) because
+of the dictonary.
 '''
 
 
