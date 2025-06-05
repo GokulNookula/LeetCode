@@ -75,3 +75,23 @@ class Solution:
             else:
                 myHash[num] = 1
         return heapq.nlargest(k,myHash,key=myHash.get)
+
+# My solution did not solve 6/4/2025
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        res = []
+        # My bucket count
+        # countArr = [f for f in range(1, len(nums) + 1)]
+
+        myHash = {}
+
+        for i in range(len(nums)):
+            if nums[i] not in myHash:
+                myHash[nums[i]] = 1
+            else:
+                myHash[nums[i]] += 1
+
+        myHash = sorted(myHash.items(), key=lambda item: item[1], reverse=True)
+        
+        res = [key for key, value in myHash[:k]]
+        return res
