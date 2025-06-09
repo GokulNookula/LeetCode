@@ -52,3 +52,19 @@ class Solution:
         
         return len(stack) == 0
 ''' Time Complexity: O(n) Space Complexity: O(n) '''
+
+# My solution - OPTIMAL on 6/8/2025
+class Solution:
+    def isValid(self, s: str) -> bool:
+        closing = {")": "(", "}": "{", "]": "["}
+        stack = []
+
+        for i in range(len(s)):
+            if s[i] not in closing:
+                stack.append(s[i])
+            else:
+                if stack and closing[s[i]] == stack[-1]:
+                    stack.pop()
+                else:
+                    return False
+        return (len(stack) == 0) 
