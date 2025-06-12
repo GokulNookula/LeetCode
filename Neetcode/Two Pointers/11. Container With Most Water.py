@@ -69,3 +69,22 @@ class Solution:
             else:
                 right -= 1
         return maxArea
+
+# My solution - OPTIMAL on 6/11/2025
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left = 0
+        right = len(height) - 1
+        maxArea = float("-inf")
+
+        while (left < right):
+            area = (right - left) * min(height[left], height[right])
+
+            if area > maxArea:
+                maxArea = area
+            
+            if height[left] > height[right]:
+                right -= 1
+            else:
+                left += 1
+        return maxArea
