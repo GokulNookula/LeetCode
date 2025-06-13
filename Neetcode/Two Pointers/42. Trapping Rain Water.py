@@ -48,3 +48,29 @@ maxLeft. We also update our maxRight pointer to check if our current height of r
 if we caught any water by adding it to the result based on maxRight - current height of right pointer. Same case since we update maxRight before we never
 deal with negative values. Then once all of it is done we return our result. Thus this process helps us prevents increasing space complexity. Thus optimal
 '''
+# My solution - Didnt not solve it on 6/12/2025
+class Solution:
+    def trap(self, height: List[int]) -> int:
+
+        if not height:
+            return 0
+
+        left = 0
+        right = len(height) - 1
+
+        maxLeft = height[left]
+        maxRight = height[right]
+        res = 0
+
+        while (left < right):
+
+            if maxLeft < maxRight:
+                left += 1
+                maxLeft = max(maxLeft, height[left])
+                res += maxLeft - height[left]
+            else:
+                right -= 1
+                maxRight = max(maxRight, height[right])
+                res += maxRight - height[right]
+        return res
+
