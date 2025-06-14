@@ -35,3 +35,15 @@ out of our stack. Next we compute the number of days aka result by doing current
 then after all of it we append the current number and index into the stack as a array pair[,]. Then
 after the for loop we return the result.
 '''
+# My solution - did not solve it 6/13/2025
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = [] # pair: [temp, index]
+        res = [0] * len(temperatures)
+        for currentIndex, currentTemp in enumerate(temperatures):
+            
+            while stack and currentTemp > stack[-1][0]:
+                stackTemp, stackIndex = stack.pop()
+                res[stackIndex] = (currentIndex - stackIndex)
+            stack.append([currentTemp, currentIndex])
+        return res
