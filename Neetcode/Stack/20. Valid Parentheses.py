@@ -67,4 +67,20 @@ class Solution:
                     stack.pop()
                 else:
                     return False
-        return (len(stack) == 0) 
+        return (len(stack) == 0)
+
+# My solution - OPTIMAL on 6/26/2025
+class Solution:
+    def isValid(self, s: str) -> bool:
+        mydict = {")": "(", "}": "{", "]": "["}
+        stack = []
+
+        for i in range(len(s)):
+            if s[i] != ")" and s[i] != "}" and s[i] != "]":
+                stack.append(s[i])
+            else:
+                if stack and mydict[s[i]] == stack[-1]:
+                    stack.pop()
+                else:
+                    return False
+        return not stack
