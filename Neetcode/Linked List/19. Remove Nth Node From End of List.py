@@ -29,3 +29,26 @@
 
 '''Explained: Time Complexity: O(n) and Space Complexity: O(1)
 '''
+
+# My solution - OPTIMAL on 7/9/2025
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummyNode = ListNode(0, head)
+        curr = dummyNode.next
+        temp = dummyNode
+        while n > 0 and curr != None:
+            curr = curr.next
+            n -= 1
+        
+        while curr != None:
+            curr = curr.next
+            temp = temp.next
+        temp.next = temp.next.next
+
+        return dummyNode.next
+
