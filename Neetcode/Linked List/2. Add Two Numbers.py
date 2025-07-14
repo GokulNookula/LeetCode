@@ -47,16 +47,20 @@ class Solution:
         return dummy.next
 
 ''' Explained: Time Complexity: O(m+n) where m = len(l1) and n = len(l2) Space Complexity: O(max(m,n)) aka max length of one of the list that is longer
-In this problem first we initalize to create a new list that stores our summed up nodes that we need to return. Next we create a variable that
-stores the carry over number since our summed newNode can only store numbers between 0-9 thus we need to carry over that number to the next node 
-for iteration. Now we create a while loop where we iterate until list1 and list2 points to null pointer and carry number is equal to 0 or else we
-continue iterating throughout the list. Now we initalize two variables like v1 and v2 which stores the value of the pointer at l1 and l2 so we can
-use it for addition for finding the summed up number or else we set them to 0 since l1 or l2 is pointing to a null pointer thus we set their value to
-0. Next we sum up v1, v2 and carry to obtain our new value we get. Next we need to find if it is greater than 9 then we obtain the carry number by 
-floor dividing it by 10 to obtain the carry over number. Next we get the new value number between 0-9 by doing modulus division by 10. Next we append
-the newNode we create to the new list that stores all the sum of two number newNodes to the next of the current pointer. Next we update our current pointer
-to not overwrite our newNode we just added. Next we need to check if our l1 and l2 is currently pointing to a null pointer aka at the end of the list then
-we return None so we can end our while loop else we update them to point to the next pointer. Then finally once we are done with the while loop we
+In this problem first we initalize to create a new list that stores our summed up nodes that we need to 
+return. Next we create a variable that stores the carry over number since our summed newNode can only 
+store numbers between 0-9 thus we need to carry over that number to the next node for iteration. Now 
+we create a while loop where we iterate until list1 and list2 points to null pointer and carry number
+is equal to 0 or else wecontinue iterating throughout the list. Now we initalize two variables like v1 
+and v2 which stores the value of the pointer at l1 and l2 so we can use it for addition for finding the 
+summed up number or else we set them to 0 since l1 or l2 is pointing to a null pointer thus we set their 
+value to 0. Next we sum up v1, v2 and carry to obtain our new value we get. Next we need to find if it is 
+greater than 9 then we obtain the carry number by  floor dividing it by 10 to obtain the carry over number. 
+Next we get the new value number between 0-9 by doing modulus division by 10. Next we append the newNode we 
+create to the new list that stores all the sum of two number newNodes to the next of the current pointer. 
+Next we update our current pointer to not overwrite our newNode we just added. Next we need to check if our 
+l1 and l2 is currently pointing to a null pointer aka at the end of the list then we return None so we can 
+end our while loop else we update them to point to the next pointer. Then finally once we are done with the while loop we
 return the head of the new list of sum of two nodes we created.
 '''
 # My solution - does not work on 7/1/2025
