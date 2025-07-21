@@ -86,3 +86,25 @@ class Solution:
 '''
 Almost close to the original optimal solution
 '''
+# My solution - OPTIMAL on 7/20/2025
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        left = 0
+        right = len(s) - 1
+
+        while (left <= right):
+            while (left < right) and self.alphaNum(s[left]) == False:
+                left += 1
+            while (left < right) and self.alphaNum(s[right]) == False:
+                right -= 1
+            if (s[left].lower() != s[right].lower()):
+                return False
+            left += 1
+            right -= 1
+        return True
+
+    def alphaNum(self, letter):
+        return (ord('a') <= ord(letter) <= ord('z') or
+                ord('A') <= ord(letter) <= ord('Z') or
+                ord('0') <= ord(letter) <= ord('9'))
