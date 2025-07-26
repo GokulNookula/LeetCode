@@ -70,3 +70,24 @@ class Solution:
                 length += 1
             longSeq = max(longSeq,length)
         return longSeq
+
+# My Solution - OPTIMAL on 7/26/2025
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        print(numSet)
+        longSeq = 0
+
+        for n in numSet:
+
+            if (n - 1) not in numSet:
+
+                length = 0
+
+                while ((n + length) in numSet):
+                    length += 1
+
+                if length > longSeq:
+                    longSeq = length
+        return longSeq 
+
