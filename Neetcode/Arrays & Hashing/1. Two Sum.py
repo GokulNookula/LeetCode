@@ -32,3 +32,17 @@ class Solution:
             myHash[nums[i]] = i
         
         return []
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        myHash = {}
+
+        for i in range(len(nums)):
+            complement = target - nums[i]
+
+            if complement in myHash:
+                return [myHash[complement], i]
+            myHash[nums[i]] = i
+        return []
+        
