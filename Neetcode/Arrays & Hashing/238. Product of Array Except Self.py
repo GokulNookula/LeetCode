@@ -53,3 +53,20 @@ class Solution:
             res[i] = prefix[i] * suffix[i]
 
         return res
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        resultArr = [1] * len(nums)
+
+        prefix = 1
+        for i in range(len(nums)):
+            resultArr[i] = prefix
+            prefix = prefix * nums[i]
+
+        postfix = 1
+        for i in reversed(range(len(nums))):
+            resultArr[i] = resultArr[i] * postfix
+            postfix = postfix * nums[i]
+
+        return resultArr
