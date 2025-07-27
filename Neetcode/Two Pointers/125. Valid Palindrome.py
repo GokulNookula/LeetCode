@@ -108,3 +108,28 @@ class Solution:
         return (ord('a') <= ord(letter) <= ord('z') or
                 ord('A') <= ord(letter) <= ord('Z') or
                 ord('0') <= ord(letter) <= ord('9'))
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+
+        while (left <= right):
+            while ((left < right) and self.alphaNum(s[left]) == False):
+                left += 1
+                continue
+            while ((left < right) and self.alphaNum(s[right]) == False):
+                right -= 1
+                continue
+            if s[left].lower() != s[right].lower():
+                return False
+            left += 1
+            right -= 1
+        return True
+
+    
+    def alphaNum(self,c):
+        return ((ord('A') <= ord(c) <= ord('Z')) or
+                (ord('a') <= ord(c) <= ord('z')) or
+                (ord('0') <= ord(c) <= ord('9')))
