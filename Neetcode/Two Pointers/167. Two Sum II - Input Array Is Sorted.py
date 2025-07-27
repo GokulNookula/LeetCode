@@ -77,3 +77,20 @@ class Solution:
             elif total == target:
                 return [left + 1, right + 1]
         return [-1,-1]
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
+
+        while (left < right):
+            total  = numbers[left] + numbers[right]
+
+            if total < target:
+                left += 1
+            elif total > target:
+                right -= 1
+            elif total == target:
+                return [left + 1,right + 1]
+        return [-1,-1]
