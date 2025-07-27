@@ -95,3 +95,25 @@ class Solution:
         
         res = [key for key, value in myHash[:k]]
         return res
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+
+        freq = [[] for i in range(len(nums) + 1)]
+        for n in nums:
+            count[n] = 1 + count.get(n,0)
+        
+        for i in count:
+            frequency = count[i]
+            freq[frequency].append(i)
+        
+        res = []
+        for i in range(len(freq) - 1, -1, -1):
+            for n in freq[i]:
+                if k > 0:
+                    res.append(n)
+                    k -= 1
+
+        return res
