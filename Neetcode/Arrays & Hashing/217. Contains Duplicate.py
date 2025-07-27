@@ -30,3 +30,16 @@ class Solution:
             if mydict[nums[i]] > 1:
                 return True
         return False
+
+# My solution - OPTIMAL on 7/26/2025
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        mydict = {}
+
+
+        for i in range(len(nums)):
+            if nums[i] in mydict:
+                return True
+            mydict[nums[i]] = 1
+
+        return False
