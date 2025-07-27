@@ -83,3 +83,22 @@ class Solution:
             else:
                 myHash[key].append(s)
         return list(myHash.values())
+
+# My solution - OPTIMAL on 7/26/2025
+from collections import defaultdict
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+
+        if len(strs) == 0:
+            return [[]]
+        
+        myHash = defaultdict(list)
+
+        for s in strs:
+            count = [0] * 26
+            for i in range(len(s)):
+                count[ord(s[i]) - ord('a')] += 1
+            myHash[tuple(count)].append(s)
+
+        return list(myHash.values()) 
