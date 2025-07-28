@@ -98,3 +98,24 @@ class Solution:
             res = max(res, r - l + 1)
 
         return res
+
+# My solution - Didnt solve it on 7/27/2025
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+
+        count = {}
+        res = 0
+        left = 0
+        maxf = 0
+
+        for right in range(len(s)):
+
+            count[s[right]] = 1 + count.get(s[right],0)
+            maxf = max(maxf, count[s[right]])
+
+            while (right - left + 1) - maxf > k:
+                count[s[left]] -= 1
+                left += 1
+            
+            res = max(res, right - left + 1)
+        return res
