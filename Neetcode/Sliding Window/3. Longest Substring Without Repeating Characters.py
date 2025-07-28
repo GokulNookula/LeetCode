@@ -53,3 +53,22 @@ class Solution:
             charSet.add(s[right])
             maxLength = max(maxLength, right - left + 1)
         return maxLength
+
+
+# My solution - Not Optimal on 7/26/2025
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        left = 0
+        right = 0
+        maxLength = 0
+        while (right < len(s)):
+            
+            if s[right] in charSet:
+                charSet.discard(s[left])
+                left += 1
+            else:
+                charSet.add(s[right])
+                maxLength = max(maxLength, right - left + 1)
+                right += 1
+        return maxLength
