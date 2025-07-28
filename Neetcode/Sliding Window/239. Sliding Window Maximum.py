@@ -41,3 +41,31 @@ class Solution:
         return output
 '''Explained: Time Complexity: O(n) Space Complexity: O(n)
 '''
+# My solution - Did not solve it on 7/28/2025
+from collections import deque
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        
+        resMaxEachWindow = []
+        queue = deque()
+
+        left = 0
+        right = 0
+
+        while(right < len(nums)):
+
+            while queue and nums[queue[-1]] < nums[right]:
+                queue.pop()
+
+            queue.append(right)
+
+            if left > queue[0]:
+                queue.popleft()
+
+            if (right + 1) >= k:
+                resMaxEachWindow.append(nums[queue[0]])
+                left += 1
+            right += 1
+        
+        return resMaxEachWindow
