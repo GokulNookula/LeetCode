@@ -39,3 +39,37 @@ class Solution:
             second = temp2
 '''Explained: Time Complexity: O(n) and Space Complexity: O(1)
 '''
+
+# My solution - Didn't solve it on 7/29/2025
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        slow = head
+        fast = head
+
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+        
+        second = slow.next
+        slow.next = None
+        prev = None
+
+        while second != None:
+            secondNxt = second.next
+            second.next = prev
+            prev = second
+            second = secondNxt
+        
+        first = head
+        second = prev
+
+        while second != None:
+            firstNxt = first.next
+            secondNxt = second.next
+            first.next = second
+            second.next = firstNxt
+            first = firstNxt
+            second = secondNxt
