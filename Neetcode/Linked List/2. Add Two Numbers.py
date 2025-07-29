@@ -138,3 +138,37 @@ class Solution:
                 l2 = None
 
         return dummy.next
+
+# My solution - OPTIMAL on 7/29/2025
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummyNode = ListNode(0)
+        curr = dummyNode
+        carry = 0
+
+        while l1 or l2 or carry:
+            if l1 != None:
+                val1 = l1.val
+            else:
+                val1 = 0
+            if l2 != None:
+                val2 = l2.val
+            else:
+                val2 = 0
+            
+            val = val1 + val2 + carry
+            carry = val // 10
+            val = val % 10
+            newNode = ListNode(val)
+            curr.next = newNode
+            curr = curr.next
+
+            if l1 != None:
+                l1 = l1.next
+            else:
+                l1 = None
+            if l2 != None:
+                l2 = l2.next
+            else:
+                l2 = None
+        return dummyNode.next
