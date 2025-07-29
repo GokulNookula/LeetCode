@@ -39,3 +39,27 @@ class Solution:
         return maxArea
 '''Explained: Time Complexity: O(n) and Space Complexity: O(n)
 '''
+
+# My solution - Didnt solve it on 7/28/2025
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        left = 0
+        stack = []
+        maxArea = float("-infinity")
+        start = 0
+
+        for index, height in enumerate(heights):
+
+            start = index
+
+            while stack and stack[-1][1] > height:
+                i, h = stack.pop()
+
+                maxArea = max(maxArea, h * (index - i))
+                start = i
+            stack.append((start,height))
+        
+        for index, height in stack:
+            maxArea = max(maxArea, height * (len(heights) - index))
+
+        return maxArea
