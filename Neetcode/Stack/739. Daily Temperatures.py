@@ -47,3 +47,19 @@ class Solution:
                 res[stackIndex] = (currentIndex - stackIndex)
             stack.append([currentTemp, currentIndex])
         return res
+
+# My solution - Didnt solve it on 7/28/2025
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Pair: (temp,index)
+        stack = []
+        res = [0] * len(temperatures)
+
+        for currIndex, currTemp in enumerate(temperatures):
+            
+            while stack and currTemp > stack[-1][1]:
+                stackIndex, stackTemp = stack.pop()
+
+                res[stackIndex] = currIndex - stackIndex
+            stack.append((currIndex,currTemp))
+        return res
