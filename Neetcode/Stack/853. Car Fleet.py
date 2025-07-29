@@ -23,3 +23,17 @@ we pop it as it will collide which would result it becoming a single fleet itsel
 then we pop it out of the stack. Next to get the number of different fleets that are itself we return the
 length of the stack.
 '''
+
+# My solution - Didnt solve it on 7/28/2025
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        pair = [(p,s) for p,s in zip(position, speed)]
+        pair.sort(reverse=True)
+        stack = []
+
+        for position, speed in pair:
+            stack.append((target - position)/ speed)
+
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+        return len(stack)
