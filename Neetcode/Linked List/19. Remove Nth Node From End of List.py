@@ -52,3 +52,22 @@ class Solution:
 
         return dummyNode.next
 
+# My solution - OPTIMAL on 7/29/2025
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummyNode = ListNode(0,head)
+        left = dummyNode
+        right = head
+
+        while n > 0:
+            right = right.next
+            n -= 1
+        
+        while right != None:
+            left = left.next
+            right = right.next
+        
+        left.next = left.next.next
+
+        return dummyNode.next
+
