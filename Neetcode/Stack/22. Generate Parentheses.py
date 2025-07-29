@@ -49,3 +49,27 @@ have closed parentheses count aka appended before the open and if so we append i
 the count and call backTrack and we also make sure to pop it out of the stack. Now finally we need to also make the
 base case of starting the backTrack algorithm. And finally we return our result.
 '''
+
+# My solution - Didnt solve it on 7/26/2025
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        stack = []
+        res = []
+
+        def backTrack(openN, closeN):
+            if openN == closeN == n:
+                res.append("".join(stack))
+                return
+            if openN < n:
+                stack.append("(")
+
+                backTrack(openN + 1,closeN)
+                stack.pop()
+            if closeN < openN:
+                stack.append(")")
+
+                backTrack(openN,closeN + 1)
+                stack.pop()
+        backTrack(0,0)
+        return res 
