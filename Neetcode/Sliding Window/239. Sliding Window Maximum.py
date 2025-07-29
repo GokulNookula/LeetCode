@@ -63,7 +63,7 @@ class Solution:
             if left > queue[0]:
                 queue.popleft()
 
-            if (right + 1) >= k:
+            if ((right - left)+ 1) >= k:
                 resMaxEachWindow.append(nums[queue[0]])
                 left += 1
             right += 1
