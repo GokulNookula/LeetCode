@@ -46,3 +46,16 @@ class Solution:
             prev = curr
             curr = temp
         return prev
+
+# My solution - OPTIMAL on 7/28/2025
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head
+
+        while curr != None:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        return prev
