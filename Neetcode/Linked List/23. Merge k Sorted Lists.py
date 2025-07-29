@@ -132,3 +132,43 @@ class Solution:
         return dummy.next
 ''' Explained: Time Complexity: O(n log k) where k is total number of lists and n is total number of nodes in k list Space Complexity: O(k)
 '''
+
+# My solution - Almost solved it on 7/29/2025
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        
+        if not lists and len(lists) == 0:
+            return None
+
+        while len(lists) > 1:
+            mergedList = []
+
+            for i in range(0,len(lists),2):
+
+                l1 = lists[i]
+
+                l2 = lists[i + 1] if i + 1 < len(lists) else None
+                mergedList.append(self.mergeLists(l1,l2))
+
+            lists = mergedList
+        return lists[0]
+
+        
+    def mergeLists(self,l1,l2):
+        dummyNode = ListNode(0)
+        tail = dummyNode
+
+        while l1 != None and l2 != None:
+            if l1.val < l2.val:
+                tail.next = l1
+                l1 = l1.next
+            else:
+                tail.next = l2
+                l2 = l2.next
+            tail = tail.next
+            
+        if l1 != None:
+            tail.next = l1
+        elif l2 != None:
+            tail.next = l2
+        return dummyNode.next
