@@ -63,3 +63,18 @@ class Solution:
         # Returning after we reach to back to the top
         # aka the root
         return root
+
+# My solution - OPTIMAL on 9/2/2025
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+
+        if root is None:
+            return None
+        
+        lefRes = self.invertTree(root.left)
+        rightRes = self.invertTree(root.right)
+
+        root.left = rightRes
+        root.right = lefRes
+
+        return root
