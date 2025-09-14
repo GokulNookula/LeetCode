@@ -172,3 +172,34 @@ class Solution:
         elif l2 != None:
             tail.next = l2
         return dummyNode.next
+
+# My solution - OPTIMAL on 9/13/2025
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+import heapq
+
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        
+        minHeap = []
+
+        for i in range(len(lists)):
+            curr = lists[i]
+
+            while (curr != None):
+                heapq.heappush(minHeap,curr.val)
+                curr = curr.next
+        
+        dummy = ListNode(0)
+        tail = dummy
+
+        while len(minHeap) != 0:
+            newNode = ListNode(heapq.heappop(minHeap))
+            tail.next = newNode
+            tail = tail.next
+        
+        return dummy.next
