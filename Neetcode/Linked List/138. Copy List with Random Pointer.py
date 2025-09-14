@@ -74,3 +74,24 @@ class Solution:
             curr = curr.next
 
         return oldCopy[head]
+
+# My solution - OPTIMAL on 9/14/2025
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        oldCopy = {None:None}
+
+        curr = head
+        while curr != None:
+            copy = Node(curr.val)
+            oldCopy[curr] = copy
+            curr = curr.next
+        
+        curr = head
+
+        while curr != None:
+            copy = oldCopy[curr]
+            copy.next = oldCopy[curr.next]
+            copy.random = oldCopy[curr.random]
+            curr = curr.next
+        
+        return oldCopy[head]
