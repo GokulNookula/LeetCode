@@ -187,3 +187,6 @@ class LRUCache:
             self.remove(lru)
 
             del self.cache[lru.key]
+
+# My solution - Didn't solve it on 9/13/2025
+
