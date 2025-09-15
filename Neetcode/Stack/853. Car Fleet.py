@@ -37,3 +37,18 @@ class Solution:
             if len(stack) >= 2 and stack[-1] <= stack[-2]:
                 stack.pop()
         return len(stack)
+
+# My solution - Didn't solve it on 9/14/2025
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        pair = [(p,s) for p, s in zip(position,speed)]
+        pair.sort(reverse=True)
+        stack = []
+
+        for position, speed in pair:
+            stack.append((target - position)/speed)
+
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+        
+        return len(stack)
