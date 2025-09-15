@@ -63,3 +63,18 @@ class Solution:
                 res[stackIndex] = currIndex - stackIndex
             stack.append((currIndex,currTemp))
         return res
+
+# My solution - OPTIMAL on 9/14/2025
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        res = [0] * len(temperatures)
+
+        for currentIdx, currTemp in enumerate(temperatures):
+            while stack and currTemp > stack[-1][1]:
+                prevIdx, prevTemp = stack.pop()
+
+                res[prevIdx] = currentIdx - prevIdx
+            
+            stack.append([currentIdx, currTemp])
+        return res
